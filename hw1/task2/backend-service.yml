@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: flask-service-task2
+spec:
+    selector:
+        app: flask-task2
+    ports:
+      - protocol: TCP
+        port: 9000
+        targetPort: 9000

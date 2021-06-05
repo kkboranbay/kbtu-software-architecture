@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: vue-deployment
+spec:
+    replicas: 2
+    selector: 
+        matchLabels:
+            app: vue
+    template:
+        metadata:
+            labels:
+                app: vue
+        spec:
+            containers:
+              - name: vue-cont
+                image: kkboranbay/vue-task2
+                ports:
+                  - containerPort: 8080
+  

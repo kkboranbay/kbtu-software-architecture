@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image: kkboranbay/user-crud-flask
+
+service:
+  type: NodePort
+  port: 9000
+
+externalPostgresql:
+  postgresqlUsername: myuser
+  postgresqlPassword: passwd
+  postgresqlDatabase: myapp
+  postgresqlHost: "postgres-dev"
+  postgresqlPort: "5432"
+
+GREETING: Kaiyrly Kun!
+ENVIRONMENT: DEVELOPMENT

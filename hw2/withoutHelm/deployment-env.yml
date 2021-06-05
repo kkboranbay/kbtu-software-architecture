@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-py-app
+  template:
+    metadata:
+      labels:
+        app: hello-py-app
+    spec:
+      containers:
+      - name: hello-py
+        image: kkboranbay/user-crud-flask
+        env:
+          - name: DATABASE_URI
+            value: "postgresql+psycopg2://myuser:passwd@postgres:5432/myapp"
+          - name: GREETING
+            value: "Salem"
+          - name: ENVIRONMENT
+            value: "prod"  
+        ports:
+          - name: web
+            containerPort: 9000

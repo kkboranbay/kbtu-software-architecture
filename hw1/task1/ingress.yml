@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: task1-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: api.sa.homework
+    http:
+      paths:
+        - path: /()(.*)
+          backend:
+            serviceName: flask-service
+            servicePort: 9000
+        - path: /kbtu/()(.*)
+          backend:
+            serviceName: flask-service
+            servicePort: 9000

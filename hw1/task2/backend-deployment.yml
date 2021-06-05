@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: flask-deployment-task2
+spec:
+    replicas: 2
+    selector: 
+        matchLabels:
+            app: flask-task2
+    template:
+        metadata:
+            labels:
+                app: flask-task2
+        spec:
+            containers:
+              - name: flask-cont-task2
+                image: kkboranbay/flask-task2
+                ports:
+                  - containerPort: 9000
+                livenessProbe:
+                  httpGet:
+                    port: 9000
+                    path: /
+                  initialDelaySeconds: 10
+                  periodSeconds: 5
+                  timeoutSeconds: 2
+                readinessProbe:
+                  httpGet:
+                    port: 9000
+                    path: /health
+                  initialDelaySeconds: 10
+                  periodSeconds: 5
